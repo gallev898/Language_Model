@@ -1,0 +1,10 @@
+trees <end>
+<start> two people holding quantity of palm trees on a beach <end>
+<start> a young woman helping a surf board on the ground <end>
+<start> two children in surf boards sitting on a beach <end>
+<start> a little boy and daughter on a paddle board <end>
+<start> a person standing on a surfboard riding a wave <end>
+<start> a person is riding a surfboard on one speed <end>
+<start> the man is riding his board threw the waves in the ocean <end>
+<start> a person on a surf board riding a wave <end>
+<start> a person passing a small wave in the ocean <end>
