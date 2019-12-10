@@ -8,6 +8,7 @@
 import argparse
 
 import torch
+import numpy as np
 import torch.nn.functional as F
 
 from word_language_model.data_holder import Corpus
@@ -42,22 +43,18 @@ with open(args.checkpoint, 'rb') as f:
 model.eval()
 corpus = Corpus(args.data)
 
-sentence = '<start> a person standing on a surfboard riding a wave <end>'
-pos = 'DET ADJ NOUN VERB ADP DET ADJ CONJ ADJ NOUN'.split()
+sentence = '<start> a man in a green shirt holding a teddy bear <end>'
 tokens = sentence.split()
 lm_prop = []
 
+hidden = model.init_hidden(1)
+
 for idx in range(len(tokens) - 1):
-    # input for model
     input = torch.tensor([[corpus.dictionary.word2idx[tokens[idx]]]]).to(device)
-    # get output
     output, hidden = model(input, hidden)
-    ######
     word_weights = output.squeeze().div(args.temperature).exp().cpu()
     word_idx = torch.multinomial(word_weights, 1)[0]
     print(corpus.dictionary.idx2word[word_idx])
-    #########
-    import numpy as np
 
 
     log_likelihood = F.log_softmax(output[0][0]).detach()
